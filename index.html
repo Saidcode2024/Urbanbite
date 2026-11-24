@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Urban Bite | Smash burgers & crispy chicken</title>
+<meta name="description" content="Urban Bite: smash burgers, crispy chicken and fresh juice. Order on WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--black:#000;--surface:#14100d;--line:#2a221b;--orange:#ff6a13;--bone:#f3ebdd;--mute:#a89c8c;
+--display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;--body:"Manrope",system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;-webkit-tap-highlight-color:transparent}
+a,button{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;touch-action:manipulation;text-decoration:none}
+a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:0}
+html{scroll-behavior:smooth;scroll-padding-top:110px;-webkit-text-size-adjust:100%}
+body{background:var(--black);color:var(--bone);font:400 16px/1.6 var(--body);-webkit-font-smoothing:antialiased}
+img{display:block;width:100%;height:100%;object-fit:cover}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:var(--display);font-weight:900;line-height:.92;letter-spacing:.01em}
+h2{font-size:clamp(44px,8vw,84px);margin-bottom:12px}
+section{padding:84px 0}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--orange);color:#000;font-weight:800;text-decoration:none;
+padding:14px 24px;border-radius:999px;border:0;cursor:pointer;font-size:16px;transition:transform .15s,background .15s}
+.btn:hover{background:#ff8a45}.btn:active{background:var(--orange)}
+.btn.ghost{background:none;color:var(--bone);box-shadow:inset 0 0 0 2px var(--line)}
+.btn.ghost:hover{box-shadow:inset 0 0 0 2px var(--orange);background:none}
+.btn svg{width:20px;height:20px;fill:currentColor}
+
+/* nav */
+header{position:sticky;top:0;z-index:20;background:rgba(0,0,0,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font:900 30px/1 var(--display);text-decoration:none;letter-spacing:.02em}
+.logo b{color:var(--orange)}
+nav{display:flex;gap:26px;font-weight:600;font-size:15px}
+nav a{text-decoration:none;color:var(--mute)}nav a:hover{color:var(--bone)}
+header .btn{padding:9px 18px;font-size:14px}
+
+/* hero */
+.hero{padding:48px 0 72px;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(76px,15vw,190px);text-transform:none}
+.hero h1 span{display:block}
+.hero h1 .o{color:var(--orange)}
+.hero p{max-width:440px;color:var(--mute);margin:26px 0 30px;font-size:18px}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.bitten{aspect-ratio:4/5;background:linear-gradient(160deg,#ff6a13,#7a2a00);position:relative;
+-webkit-mask:radial-gradient(circle at 100% 14%,#0000 58px,#000 59px),radial-gradient(circle at 100% 29%,#0000 44px,#000 45px),radial-gradient(circle at 96% 42%,#0000 34px,#000 35px);
+-webkit-mask-composite:source-in;mask:radial-gradient(circle at 100% 14%,#0000 58px,#000 59px),radial-gradient(circle at 100% 29%,#0000 44px,#000 45px),radial-gradient(circle at 96% 42%,#0000 34px,#000 35px);mask-composite:intersect;border-radius:28px 0 28px 28px}
+.bitten img{position:absolute;inset:0;object-fit:contain;padding:10% 4% 12% 2%;filter:drop-shadow(0 22px 24px rgba(0,0,0,.5))}
+
+/* photo frames: gradient shows if a photo file is missing */
+.ph{position:relative;overflow:hidden;background:radial-gradient(ellipse 70% 60% at 50% 58%,rgba(255,106,19,.38),rgba(255,106,19,0) 70%),linear-gradient(180deg,#1d1510,#080504);border-radius:18px}
+.ph::after{content:"";position:absolute;left:18%;right:18%;bottom:9%;height:7%;background:radial-gradient(closest-side,rgba(0,0,0,.65),transparent);filter:blur(6px)}
+.ph img{position:absolute;inset:0;object-fit:contain;padding:8% 6%;z-index:1;filter:drop-shadow(0 18px 22px rgba(0,0,0,.55));transition:transform .5s}
+.card:hover .ph img{transform:scale(1.04)}
+
+/* best sellers */
+.bs{display:grid;grid-template-columns:repeat(12,1fr);gap:16px;margin-top:36px}
+.card{background:var(--surface);border-radius:22px;overflow:hidden;display:flex;flex-direction:column}
+.card .ph{border-radius:0;aspect-ratio:4/3}
+.card .info{padding:18px 20px 22px;display:flex;flex-direction:column;gap:6px;flex:1}
+.card h3{font-size:30px}
+.price{font:900 26px/1 var(--display);color:var(--orange)}
+.price small{font:600 13px var(--body);color:var(--mute);margin-left:4px}
+.row{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:auto;padding-top:12px}
+.ord{background:none;border:2px solid var(--line);color:var(--bone);font:800 14px var(--body);padding:9px 16px;border-radius:999px;cursor:pointer;transition:.15s}
+.ord:hover{background:var(--orange);border-color:var(--orange);color:#000}.ord:active{background:var(--orange)}
+.bs .card{grid-column:span 4}
+.bs .star{grid-column:span 8;grid-row:span 2;flex-direction:row;background:var(--orange);color:#000}
+.star .ph{aspect-ratio:auto;flex:1.2;min-height:340px;background:radial-gradient(ellipse 65% 55% at 50% 55%,#ff9a52,rgba(255,106,19,0) 72%)}.star .ph::after{background:radial-gradient(closest-side,rgba(0,0,0,.45),transparent)}.star .ph img{padding:4% 2%}
+.star .info{flex:1;padding:30px;justify-content:center}
+.star h3{font-size:clamp(48px,6vw,78px)}
+.star .price{color:#000;font-size:40px}.star .price small{color:#000}
+.star .tag{font-weight:800;font-size:15px}
+.star .ord{border-color:#000;color:#000}.star .ord:hover{background:#000;color:var(--orange);border-color:#000}
+.star p{max-width:300px;font-weight:600}
+
+/* offers */
+.offers{background:var(--surface)}
+.deals{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:36px}
+.deal{border:2px dashed var(--orange);border-radius:22px;padding:30px;display:flex;flex-direction:column;gap:10px}
+.deal h3{font-size:46px}
+.deal .was{color:var(--mute);text-decoration:line-through;font-weight:600}
+.deal .price{font-size:44px}
+
+/* menu */
+.tabs{display:flex;gap:8px;margin:30px 0 26px;flex-wrap:wrap}
+.tab{background:none;border:2px solid var(--line);color:var(--mute);font:800 15px var(--body);padding:10px 22px;border-radius:999px;cursor:pointer}
+.tab[aria-selected=true]{background:var(--bone);border-color:var(--bone);color:#000}
+.menu{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+.menu .card .ph{aspect-ratio:1/1}
+
+/* contact */
+.contact .wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.contact dl{display:grid;gap:22px;margin-top:28px}
+.contact dt{font-weight:800;color:var(--orange)}
+.contact dd{color:var(--mute)}
+.map{border-radius:22px;min-height:360px;overflow:hidden;border:1px solid var(--line);background:#1b1510}.map iframe{width:100%;height:100%;min-height:360px;border:0;filter:grayscale(.3) contrast(1.05)}
+footer{padding:30px 0 100px;border-top:1px solid var(--line);color:var(--mute);font-size:14px}
+
+/* floating whatsapp */
+.fab{position:fixed;right:max(18px,env(safe-area-inset-right));bottom:max(18px,env(safe-area-inset-bottom));z-index:30;box-shadow:0 8px 30px rgba(255,106,19,.45);padding:16px 22px}
+
+@media(max-width:1024px){
+.bs .card{grid-column:span 6}.bs .star{grid-column:span 12}
+.hero .wrap{gap:28px}
+}
+@media(max-width:860px){
+header .wrap{height:auto;flex-wrap:wrap;padding-top:10px;padding-bottom:8px;row-gap:6px}
+nav{order:3;width:100%;overflow-x:auto;gap:22px;scrollbar-width:none;white-space:nowrap}
+nav::-webkit-scrollbar{display:none}
+.hero .wrap,.contact .wrap{grid-template-columns:1fr}
+.bitten{aspect-ratio:1/1;order:-1}
+.bs .card,.bs .star{grid-column:span 12}
+.bs .star{flex-direction:column}.star .ph{min-height:260px;flex:none}
+.deals{grid-template-columns:1fr}
+section{padding:60px 0}
+.tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}.tab{white-space:nowrap}
+}
+@media(max-width:560px){
+.wrap{padding:0 16px}
+.bs .card{grid-column:span 12}
+.hero{padding:28px 0 52px}.hero p{font-size:16px}
+.cta .btn{flex:1;justify-content:center}
+.star .info{padding:22px}.deal{padding:22px}.deal h3{font-size:38px}
+.menu{grid-template-columns:1fr 1fr;gap:12px}
+.menu .card h3{font-size:22px}.menu .card .info{padding:12px 12px 16px}
+.menu .row{flex-direction:column;align-items:flex-start;gap:10px}
+.fab{padding:14px 18px}
+}
+@media(max-width:360px){.menu{grid-template-columns:1fr}}
+@media(min-width:1600px){.wrap{max-width:1360px}html{font-size:18px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<a class="logo" href="#top">Urban<b>Bite</b></a>
+<nav><a href="#best">Best sellers</a><a href="#offers">Offers</a><a href="#menu">Menu</a><a href="#contact">Find us</a></nav>
+<a class="btn wa" href="#">Order</a>
+</div></header>
+
+<main id="top">
+<section class="hero"><div class="wrap">
+<div>
+<h1><span>Smashed.</span><span class="o">Stacked.</span><span>Sauced.</span></h1>
+<p>Smash burgers, crispy chicken and fresh orange juice, made to order. Send us your order on WhatsApp and we start cooking.</p>
+<div class="cta"><a class="btn wa" href="#">Order on WhatsApp</a><a class="btn ghost" href="#menu">See the menu</a></div>
+</div>
+<div class="bitten"><img src="images/hero.webp" alt="Double Smash Burger from Urban Bite" fetchpriority="high" onerror="this.remove()"></div>
+</div></section>
+
+<section id="best"><div class="wrap">
+<h2>Our Best Sellers</h2>
+<div class="bs" id="bs"></div>
+</div></section>
+
+<section id="offers" class="offers"><div class="wrap">
+<h2>Deals and specials</h2>
+<div class="deals" id="deals"></div>
+</div></section>
+
+<section id="menu"><div class="wrap">
+<h2>The menu</h2>
+<div class="tabs" role="tablist" id="tabs"></div>
+<div class="menu" id="menuGrid"></div>
+</div></section>
+
+<section id="contact" class="contact"><div class="wrap">
+<div>
+<h2>Come hungry</h2>
+<dl>
+<div><dt>Address</dt><dd>King Fahd Road, Riyadh, Saudi Arabia.</dd></div>
+<div><dt>Opening hours</dt><dd>Saturday – Thursday: 12:00 PM – 1:00 AM</dd><dd>Friday: 4:00 PM – 2:00 AM</dd></div>
+<div><dt>Phone and WhatsApp</dt><dd><a href="tel:+966501234567">+966501234567</a></dd></div>
+</dl>
+<div class="cta" style="margin-top:28px"><a class="btn wa" href="#">Order on WhatsApp</a><a class="btn ghost" id="mapLink" href="#" target="_blank" rel="noopener">Get directions</a></div>
+</div>
+<div class="map"><iframe title="Urban Bite location on Google Maps" src="https://www.google.com/maps?q=29QV%2B3VX%20Mansoura&hl=en&z=17&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
+</div></section>
+</main>
+
+<footer><div class="wrap">&copy; 2026 Urban Bite. All prices in Saudi riyals (SAR).</div></footer>
+<a class="btn fab wa" href="#" aria-label="Order on WhatsApp"></a>
+
+<script>
+const WA="966501234567"; // restaurant WhatsApp number: country code + number, no + or spaces
+const MAP_QUERY="29QV+3VX Mansoura"; // location code from the client's Google Maps pin
+const ICON='<svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.7 14.9L2 22l5.3-1.4A10 10 0 1 0 12 2Zm-3 5.5c.3 0 .6 0 .8.5l.9 2c.1.3 0 .5-.1.7l-.6.8c.9 1.700 2.300 2.800 4 3.500l.9-1.100c.2-.2.4-.3.700-.2l2 1c.3.100.4.300.4.500 0 .7-.5 1.600-1.400 1.900-.8.300-1.800.400-4.200-.8C10 15.500 8.400 13 8.200 12.700 8 12.400 7 11 7 9.600s.8-2.100 1.100-2c.2-.1.500-.1.900-.1Z"/></svg>';
+const link=t=>`https://wa.me/${WA}?text=${encodeURIComponent(t)}`;
+const img=(f,alt,lazy=1)=>`<img src="images/${f}.webp" alt="${alt}" ${lazy?'loading="lazy"':''} onerror="this.remove()">`;
+const card=(i,cls="")=>`<article class="card ${cls}"><div class="ph">${img(i.f,i.n)}</div><div class="info"><h3>${i.n}</h3><div class="row"><span class="price">${i.p}<small>SAR</small></span><button class="ord" data-n="${i.n}" data-p="${i.p}">Order</button></div></div></article>`;
+
+const best=[
+{n:"Double Smash Burger",p:38,f:"double-smash"},
+{n:"Classic Beef Burger",p:28,f:"classic-beef"},
+{n:"Crispy Chicken Burger",p:30,f:"crispy-chicken-burger"},
+{n:"Loaded Fries",p:18,f:"loaded-fries"},
+{n:"Crispy Chicken Meal",p:35,f:"crispy-chicken-meal"}];
+const s=best[0];
+document.getElementById("bs").innerHTML=
+`<article class="card star"><div class="ph">${img(s.f,s.n,0)}</div><div class="info">
+<span class="tag">⭐ Most ordered</span><h3>${s.n}</h3>
+<p>Two smashed patties, melted cheese and our house sauce on a toasted bun.</p>
+<div class="row"><span class="price">${s.p}<small>SAR</small></span><button class="ord" data-n="${s.n}" data-p="${s.p}">Order</button></div></div></article>`
++best.slice(1).map(i=>card(i)).join("");
+
+const deals=[
+{n:"Crispy Chicken Meal + Pepsi",was:40,p:37,note:"Meal with a cold drink."},
+{n:"Strips and Juice",was:34,p:30,note:"Chicken Strips with Fresh Orange Juice."}];
+document.getElementById("deals").innerHTML=deals.map(d=>`<article class="deal"><h3>${d.n}</h3><p style="color:var(--mute)">${d.note}</p>
+<div class="was">${d.was} SAR</div><div class="price">${d.p}<small>SAR</small></div>
+<div><button class="ord" data-n="${d.n} (deal)" data-p="${d.p}">Order this deal</button></div></article>`).join("");
+
+const menu={
+"Starters":[{n:"Chicken Strips",p:22,f:"chicken-strips"}],
+"Meals":[{n:"Chicken BBQ Sandwich",p:25,f:"bbq-sandwich"},{n:"Crispy Chicken Meal",p:35,f:"crispy-chicken-meal"}],
+"Drinks":[{n:"Pepsi",p:5,f:"pepsi"},{n:"Fresh Orange Juice",p:12,f:"orange-juice"}]};
+const tabs=document.getElementById("tabs"),grid=document.getElementById("menuGrid");
+function show(k){
+grid.innerHTML=menu[k].map(i=>card(i)).join("");
+[...tabs.children].forEach(b=>b.setAttribute("aria-selected",b.textContent===k));}
+Object.keys(menu).forEach(k=>{const b=document.createElement("button");b.className="tab";b.role="tab";b.textContent=k;b.onclick=()=>show(k);tabs.append(b)});
+show("Starters");
+
+document.addEventListener("click",e=>{
+const b=e.target.closest(".ord");if(!b)return;
+window.open(link(`Hi Urban Bite, I'd like to order: ${b.dataset.n} (${b.dataset.p} SAR)`),"_blank");});
+document.querySelectorAll(".wa").forEach(a=>{a.href=link("Hi Urban Bite, I'd like to place an order.");a.target="_blank";a.rel="noopener";
+if(a.classList.contains("fab")||a.closest(".cta"))a.insertAdjacentHTML("afterbegin",ICON);
+if(a.classList.contains("fab"))a.insertAdjacentText("beforeend","Order");});
+document.getElementById("mapLink").href="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(MAP_QUERY);
+</script>
+</body>
+</html>
