@@ -174,13 +174,13 @@ section{padding:60px 0}
 <div>
 <h2>Come hungry</h2>
 <dl>
-<div><dt>Address</dt><dd>King Fahd Road, Riyadh, Saudi Arabia.</dd></div>
+<div><dt>Address</dt><dd>King Fahd Road, Al Olaya, Riyadh, Saudi Arabia.</dd></div>
 <div><dt>Opening hours</dt><dd>Saturday – Thursday: 12:00 PM – 1:00 AM</dd><dd>Friday: 4:00 PM – 2:00 AM</dd></div>
 <div><dt>Phone and WhatsApp</dt><dd><a href="tel:+966501234567">+966501234567</a></dd></div>
 </dl>
 <div class="cta" style="margin-top:28px"><a class="btn wa" href="#">Order on WhatsApp</a><a class="btn ghost" id="mapLink" href="#" target="_blank" rel="noopener">Get directions</a></div>
 </div>
-<div class="map"><iframe title="Urban Bite location on Google Maps" src="https://www.google.com/maps?q=29QV%2B3VX%20Mansoura&hl=en&z=17&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
+<div class="map"><iframe title="Urban Bite location on Google Maps" src="https://www.google.com/maps?q=Kingdom+Centre%2C+King+Fahd+Road%2C+Al+Olaya%2C+Riyadh&hl=en&z=17&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
 </div></section>
 </main>
 
@@ -189,7 +189,7 @@ section{padding:60px 0}
 
 <script>
 const WA="966501234567"; // restaurant WhatsApp number: country code + number, no + or spaces
-const MAP_QUERY="29QV+3VX Mansoura"; // location code from the client's Google Maps pin
+const MAP_URL="https://maps.app.goo.gl/ZsCEVrdBoCn1ud6j9"; // restaurant Google Maps pin
 const ICON='<svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.7 14.9L2 22l5.3-1.4A10 10 0 1 0 12 2Zm-3 5.5c.3 0 .6 0 .8.5l.9 2c.1.3 0 .5-.1.7l-.6.8c.9 1.700 2.300 2.800 4 3.500l.9-1.100c.2-.2.4-.3.700-.2l2 1c.3.100.4.300.4.500 0 .7-.5 1.600-1.400 1.900-.8.300-1.800.400-4.200-.8C10 15.500 8.400 13 8.200 12.700 8 12.400 7 11 7 9.600s.8-2.100 1.100-2c.2-.1.500-.1.900-.1Z"/></svg>';
 const link=t=>`https://wa.me/${WA}?text=${encodeURIComponent(t)}`;
 const img=(f,alt,lazy=1)=>`<img src="images/${f}.webp" alt="${alt}" ${lazy?'loading="lazy"':''} onerror="this.remove()">`;
@@ -217,7 +217,8 @@ document.getElementById("deals").innerHTML=deals.map(d=>`<article class="deal"><
 <div><button class="ord" data-n="${d.n} (deal)" data-p="${d.p}">Order this deal</button></div></article>`).join("");
 
 const menu={
-"Starters":[{n:"Chicken Strips",p:22,f:"chicken-strips"}],
+"Burgers":[{n:"Double Smash Burger",p:38,f:"double-smash"},{n:"Classic Beef Burger",p:28,f:"classic-beef"},{n:"Crispy Chicken Burger",p:30,f:"crispy-chicken-burger"}],
+"Starters":[{n:"Chicken Strips",p:22,f:"chicken-strips"},{n:"Loaded Fries",p:18,f:"loaded-fries"}],
 "Meals":[{n:"Chicken BBQ Sandwich",p:25,f:"bbq-sandwich"},{n:"Crispy Chicken Meal",p:35,f:"crispy-chicken-meal"}],
 "Drinks":[{n:"Pepsi",p:5,f:"pepsi"},{n:"Fresh Orange Juice",p:12,f:"orange-juice"}]};
 const tabs=document.getElementById("tabs"),grid=document.getElementById("menuGrid");
@@ -225,7 +226,7 @@ function show(k){
 grid.innerHTML=menu[k].map(i=>card(i)).join("");
 [...tabs.children].forEach(b=>b.setAttribute("aria-selected",b.textContent===k));}
 Object.keys(menu).forEach(k=>{const b=document.createElement("button");b.className="tab";b.role="tab";b.textContent=k;b.onclick=()=>show(k);tabs.append(b)});
-show("Starters");
+show("Burgers");
 
 document.addEventListener("click",e=>{
 const b=e.target.closest(".ord");if(!b)return;
@@ -233,7 +234,7 @@ window.open(link(`Hi Urban Bite, I'd like to order: ${b.dataset.n} (${b.dataset.
 document.querySelectorAll(".wa").forEach(a=>{a.href=link("Hi Urban Bite, I'd like to place an order.");a.target="_blank";a.rel="noopener";
 if(a.classList.contains("fab")||a.closest(".cta"))a.insertAdjacentHTML("afterbegin",ICON);
 if(a.classList.contains("fab"))a.insertAdjacentText("beforeend","Order");});
-document.getElementById("mapLink").href="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(MAP_QUERY);
+document.getElementById("mapLink").href=MAP_URL;
 </script>
 </body>
 </html>
